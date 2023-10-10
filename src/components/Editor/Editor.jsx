@@ -14,6 +14,8 @@ function Editor(props) {
     information[sections[Object.keys(sections)[0]]]
   );
 
+  const [activeDetailIndex, setActiveDetailIndex] = useState(0);
+
   const [sectionTitle, setSectionTitle] = useState(
     sections[Object.keys(sections)[0]]
   );
@@ -40,7 +42,7 @@ function Editor(props) {
         <InputControl
           label="Title"
           placeholder="Enter Title eg. front-end developer"
-          defaultValue={values.title}
+          value={values.title}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
@@ -48,7 +50,7 @@ function Editor(props) {
         <InputControl
           label="Company Name"
           placeholder="Enter Company Name eg. Google"
-          defaultValue={values.companyName}
+          value={values.companyName}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, companyName: event.target.value }))
           }
@@ -58,7 +60,7 @@ function Editor(props) {
         <InputControl
           label="Start Date"
           placeholder="Enter Start Date"
-          defaultValue={values.startDate}
+          value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
           }
@@ -66,7 +68,7 @@ function Editor(props) {
         <InputControl
           label="End Date"
           placeholder="Enter End Date"
-          defaultValue={values.endDate}
+          value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
           }
@@ -76,7 +78,7 @@ function Editor(props) {
         <InputControl
           label="Location"
           placeholder="Enter Location"
-          defaultValue={values.location}
+          value={values.location}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, location: event.target.value }))
           }
@@ -84,7 +86,7 @@ function Editor(props) {
         <InputControl
           label="certificate Link"
           placeholder="Enter certificate Link"
-          defaultValue={values.certificationLink}
+          value={values.certificationLink}
           onChange={(event) =>
             setValues((prev) => ({
               ...prev,
@@ -98,17 +100,17 @@ function Editor(props) {
         <label> Enter work description</label>
         <InputControl
           placeholder="Line 1"
-          defaultValue={values.points ? values.points[0] : ""}
+          value={values.points ? values.points[0] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 0)}
         />
         <InputControl
           placeholder="Line 2"
-          defaultValue={values.points ? values.points[1] : ""}
+          value={values.points ? values.points[1] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 1)}
         />
         <InputControl
           placeholder="Line 3"
-          defaultValue={values.points ? values.points[2] : ""}
+          value={values.points ? values.points[2] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 2)}
         />
       </div>
@@ -121,7 +123,7 @@ function Editor(props) {
         <InputControl
           label="Title"
           placeholder="Enter Title eg. chat app"
-          defaultValue={values.title}
+          value={values.title}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
@@ -129,7 +131,7 @@ function Editor(props) {
         <InputControl
           label="Overview"
           placeholder="Enter basic overview"
-          defaultValue={values.overview}
+          value={values.overview}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, overview: event.target.value }))
           }
@@ -139,7 +141,7 @@ function Editor(props) {
         <InputControl
           label="Deployed Link"
           placeholder="Enter Deployed Link"
-          defaultValue={values.Link}
+          value={values.Link}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, Link: event.target.value }))
           }
@@ -147,7 +149,7 @@ function Editor(props) {
         <InputControl
           label="Github Link"
           placeholder="Enter Github Link"
-          defaultValue={values.github}
+          value={values.github}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, github: event.target.value }))
           }
@@ -158,17 +160,17 @@ function Editor(props) {
         <label> Enter Project description</label>
         <InputControl
           placeholder="Line 1"
-          defaultValue={values.points ? values.points[0] : ""}
+          value={values.points ? values.points[0] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 0)}
         />
         <InputControl
           placeholder="Line 2"
-          defaultValue={values.points ? values.points[1] : ""}
+          value={values.points ? values.points[1] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 1)}
         />
         <InputControl
           placeholder="Line 3"
-          defaultValue={values.points ? values.points[2] : ""}
+          value={values.points ? values.points[2] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 2)}
         />
       </div>
@@ -181,7 +183,7 @@ function Editor(props) {
         <InputControl
           label="College/School Name"
           placeholder="Enter College/School Name"
-          defaultValue={values.college}
+          value={values.college}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, college: event.target.value }))
           }
@@ -189,7 +191,7 @@ function Editor(props) {
         <InputControl
           label="Qualification"
           placeholder="Enter Qualification eg. B.Tech"
-          defaultValue={values.qualification}
+          value={values.qualification}
           onChange={(event) =>
             setValues((prev) => ({
               ...prev,
@@ -202,7 +204,7 @@ function Editor(props) {
         <InputControl
           label="Start Date"
           placeholder="Enter Start Date"
-          defaultValue={values.startDate}
+          value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
           }
@@ -210,7 +212,7 @@ function Editor(props) {
         <InputControl
           label="End Date"
           placeholder="Enter End Date"
-          defaultValue={values.endDate}
+          value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
           }
@@ -225,7 +227,7 @@ function Editor(props) {
         <InputControl
           label="Name"
           placeholder="Enter Name"
-          defaultValue={values.name}
+          value={values.name}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, name: event.target.value }))
           }
@@ -233,7 +235,7 @@ function Editor(props) {
         <InputControl
           label="Title"
           placeholder="Enter Title eg. front-end developer"
-          defaultValue={values.title}
+          value={values.title}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
@@ -243,7 +245,7 @@ function Editor(props) {
         <InputControl
           label="Linkedin Link"
           placeholder="Enter Linkedin Link"
-          defaultValue={values.linkedin}
+          value={values.linkedin}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, linkedin: event.target.value }))
           }
@@ -251,7 +253,7 @@ function Editor(props) {
         <InputControl
           label="Github Link"
           placeholder="Enter Github Link"
-          defaultValue={values.github}
+          value={values.github}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, github: event.target.value }))
           }
@@ -261,7 +263,7 @@ function Editor(props) {
         <InputControl
           label="Email"
           placeholder="Enter Email"
-          defaultValue={values.email}
+          value={values.email}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
@@ -269,7 +271,7 @@ function Editor(props) {
         <InputControl
           label="Phone Number"
           placeholder="Enter Phone Number"
-          defaultValue={values.phone}
+          value={values.phone}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, phone: event.target.value }))
           }
@@ -284,17 +286,17 @@ function Editor(props) {
         <label>List Your Achievement</label>
         <InputControl
           placeholder="Line 1"
-          defaultValue={values.points ? values.points[0] : ""}
+          value={values.points ? values.points[0] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 0)}
         />
         <InputControl
           placeholder="Line 2"
-          defaultValue={values.points ? values.points[1] : ""}
+          value={values.points ? values.points[1] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 1)}
         />
         <InputControl
           placeholder="Line 3"
-          defaultValue={values.points ? values.points[2] : ""}
+          value={values.points ? values.points[2] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 2)}
         />
       </div>
@@ -306,7 +308,7 @@ function Editor(props) {
       <InputControl
         label="Summary"
         placeholder="Enter Summary"
-        defaultValue={values.summary}
+        value={values.summary}
         onChange={(event) =>
           setValues((prev) => ({ ...prev, summary: event.target.value }))
         }
@@ -319,7 +321,7 @@ function Editor(props) {
       <InputControl
         label="Other"
         placeholder="Enter Other"
-        defaultValue={values.other}
+        value={values.other}
         onChange={(event) =>
           setValues((prev) => ({ ...prev, other: event.target.value }))
         }
@@ -337,7 +339,7 @@ function Editor(props) {
         return projectBody;
       case sections.education:
         return educationBody;
-      case sections.achievements:
+      case sections.achievement:
         return achievementsBody;
       case sections.summary:
         return summaryBody;
@@ -349,13 +351,140 @@ function Editor(props) {
   };
 
   const handleSubmission = () => {
-    console.log(values);
+    switch (sections[activeSectionKey]) {
+      case sections.basicInfo : {
+        const tempDetail = {
+          name: values.name,
+          title: values.title,
+          linkedin: values.linkedin,
+          github: values.github,
+          phone: values.phone,
+          email: values.email,
+        };
+
+        props.setInformation((prev)=>({
+          ...prev,
+          [sections.basicInfo]: {
+            ...prev[sections.basicInfo],
+            detail: tempDetail,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.workExp: {
+        const tempDetail = {
+          certificationLink: values.certificationLink,
+          title: values.title,
+          startDate: values.startDate,
+          endDate: values.endDate,
+          companyName: values.companyName,
+          location: values.location,
+          points: values.points,
+        };
+        const tempDetails = [...information[sections.workExp]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.workExp]: {
+            ...prev[sections.workExp],
+            details: tempDetails,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.project: {
+        const tempDetail = {
+          link: values.link,
+          title: values.title,
+          overview: values.overview,
+          github: values.github,
+          points: values.points,
+        };
+        const tempDetails = [...information[sections.project]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.project]: {
+            ...prev[sections.project],
+            details: tempDetails,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.education: {
+        const tempDetail = {
+          title: values.title,
+          college: values.college,
+          startDate: values.startDate,
+          endDate: values.endDate,
+        };
+        const tempDetails = [...information[sections.education]?.details];
+        tempDetails[activeDetailIndex] = tempDetail;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.education]: {
+            ...prev[sections.education],
+            details: tempDetails,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.achievement: {
+        const tempPoints = values.points;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.achievement]: {
+            ...prev[sections.achievement],
+            points: tempPoints,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.summary: {
+        const tempDetail = values.summary;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.summary]: {
+            ...prev[sections.summary],
+            detail: tempDetail,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      case sections.other: {
+        const tempDetail = values.other;
+
+        props.setInformation((prev) => ({
+          ...prev,
+          [sections.other]: {
+            ...prev[sections.other],
+            detail: tempDetail,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
+      default:
+        return null;
+    }
   };
 
   useEffect(() => {
     const activeInfo = information[sections[activeSectionKey]];
     setActiveInformation(activeInfo);
     setSectionTitle(sections[activeSectionKey]);
+    setActiveDetailIndex(0);
     setValues({
         name: activeInfo?.detail?.name || "",
         overview: activeInfo?.details
@@ -394,8 +523,8 @@ function Editor(props) {
           : activeInfo?.detail?.github || "",
         phone: activeInfo?.detail?.phone || "",
         email: activeInfo?.detail?.email || "",
-        summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
-        other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
+        summary: activeInfo?.detail?.summary || "",
+        other: activeInfo?.detail?.other || "",
       });
     }, [activeSectionKey]);
 
@@ -430,8 +559,11 @@ function Editor(props) {
           {activeInformation?.details
             ? activeInformation?.details?.map((item, index) => (
                 <div
-                  className={`${styles.chip} `}
+                  className={`${styles.chip} ${
+                    activeDetailIndex === index ? styles.active : ""
+                  }`}
                   key={item.title + index}
+                  onClick={()=> setActiveDetailIndex(index)}
                 >
                   <p>
                     {sections[activeSectionKey]} {index + 1}

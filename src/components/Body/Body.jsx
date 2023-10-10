@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./Body.module.css";
 import { Download } from 'react-feather';
 import Editor from '../Editor/Editor';
@@ -17,7 +17,7 @@ function Body() {
     workExp: "Work Experience",
     project: "Projects",
     education: "Education",
-    achievements: "Achievements",
+    achievement: "Achievement",
     summary: "Summary",
     other: "Other",
   };
@@ -31,10 +31,7 @@ function Body() {
     [sections.workExp]: {
       id: sections.workExp,
       sectionTitle: sections.workExp,
-      details: [{
-        companyName: "Google",
-        certificationLink: "https://www.google.com",
-      }],
+      details: [],
     },
     [sections.project]: {
       id: sections.project,
@@ -63,6 +60,9 @@ function Body() {
     },
   });
 
+  useEffect(()=>{
+    console.log(resumeInformation)
+  },[resumeInformation])
 
   return (
     <div className={styles.container}>
@@ -82,7 +82,9 @@ function Body() {
             </button>
         </div>
         <div className={styles.main}>
-            <Editor sections={sections} information={resumeInformation}/>
+            <Editor sections={sections} information={resumeInformation}
+              setInformation = {setResumeInformation}
+            />
         </div>
     </div>
   )
