@@ -61,6 +61,14 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.chips .new{
+    color: #09a0bb;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .chip{
@@ -70,6 +78,7 @@
     padding: 5px 10px;
     background-color: #808080;
     border-radius: 9px;
+    cursor: default;
 }
 
 .chip p{
@@ -85,7 +94,7 @@
     cursor: pointer;
 }
 
-.chip .active{
+.chip.active{
     background-color: #09a0bb;
 }
 
