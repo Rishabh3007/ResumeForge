@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from "./Body.module.css";
 import { Download } from 'react-feather';
 import Editor from '../Editor/Editor';
+import Resume from '../Resume/Resume';
 
 function Body() {
   const colors = [
@@ -84,6 +85,11 @@ function Body() {
         <div className={styles.main}>
             <Editor sections={sections} information={resumeInformation}
               setInformation = {setResumeInformation}
+            />
+
+            <Resume
+              sections={sections}
+              information={resumeInformation}
             />
         </div>
     </div>

@@ -60,6 +60,7 @@ function Editor(props) {
         <InputControl
           label="Start Date"
           placeholder="Enter Start Date"
+          type=  "date"
           value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
@@ -67,6 +68,7 @@ function Editor(props) {
         />
         <InputControl
           label="End Date"
+          type=  "date"
           placeholder="Enter End Date"
           value={values.endDate}
           onChange={(event) =>
