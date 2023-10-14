@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import { AtSign, Phone, Linkedin, GitHub } from 'react-feather'
 import styles from "./Resume.module.css"
 import { useEffect } from 'react';
 import { Calendar, MapPin, Paperclip } from 'react-feather';
 
-function Resume(props) {
+const Resume = forwardRef((props,ref) => {
   const information = props.information;
   const sections = props.sections;
+  const containerRef = useRef();
+
   const [columns, setColumns] = React.useState([[],[]]);
+  const [source, setSource] = useState("");
+  const [target, seTarget] = useState("");
 
   const info = {
     workExp: information[sections.workExp],
@@ -30,9 +34,9 @@ function Resume(props) {
     [sections.workExp]: (
       <div
         key={"workexp"}
-        // draggable
-        // onDragOver={() => seTarget(info.workExp?.id)}
-        // onDragEnd={() => setSource(info.workExp?.id)}
+        draggable
+        onDragOver={() => seTarget(info.workExp?.id)}
+        onDragEnd={() => setSource(info.workExp?.id)}
         className={`${styles.section} ${
           info.workExp?.sectionTitle ? "" : styles.hidden
         }`}
@@ -93,9 +97,9 @@ function Resume(props) {
     [sections.project]: (
       <div
         key={"project"}
-        // draggable
-        // onDragOver={() => seTarget(info.project?.id)}
-        // onDragEnd={() => setSource(info.project?.id)}
+        draggable
+        onDragOver={() => seTarget(info.project?.id)}
+        onDragEnd={() => setSource(info.project?.id)}
         className={`${styles.section} ${
           info.project?.sectionTitle ? "" : styles.hidden
         }`}
@@ -149,9 +153,9 @@ function Resume(props) {
     [sections.education]: (
       <div
         key={"education"}
-        // draggable
-        // onDragOver={() => seTarget(info.education?.id)}
-        // onDragEnd={() => setSource(info.education?.id)}
+        draggable
+        onDragOver={() => seTarget(info.education?.id)}
+        onDragEnd={() => setSource(info.education?.id)}
         className={`${styles.section} ${
           info.education?.sectionTitle ? "" : styles.hidden
         }`}
@@ -188,9 +192,9 @@ function Resume(props) {
     [sections.achievement]: (
       <div
         key={"achievement"}
-        // draggable
-        // onDragOver={() => seTarget(info.achievement?.id)}
-        // onDragEnd={() => setSource(info.achievement?.id)}
+        draggable
+        onDragOver={() => seTarget(info.achievement?.id)}
+        onDragEnd={() => setSource(info.achievement?.id)}
         className={`${styles.section} ${
           info.achievement?.sectionTitle ? "" : styles.hidden
         }`}
@@ -216,9 +220,9 @@ function Resume(props) {
     [sections.summary]: (
       <div
         key={"summary"}
-        // draggable
-        // onDragOver={() => seTarget(info.summary?.id)}
-        // onDragEnd={() => setSource(info.summary?.id)}
+        draggable
+        onDragOver={() => seTarget(info.summary?.id)}
+        onDragEnd={() => setSource(info.summary?.id)}
         className={`${styles.section} ${
           info.summary?.sectionTitle ? "" : styles.hidden
         }`}
@@ -232,9 +236,9 @@ function Resume(props) {
     [sections.other]: (
       <div
         key={"other"}
-        // draggable
-        // onDragOver={() => seTarget(info.other?.id)}
-        // onDragEnd={() => setSource(info.other?.id)}
+        draggable
+        onDragOver={() => seTarget(info.other?.id)}
+        onDragEnd={() => setSource(info.other?.id)}
         className={`${styles.section} ${
           info.other?.sectionTitle ? "" : styles.hidden
         }`}
@@ -247,6 +251,33 @@ function Resume(props) {
     ),
   };
 
+  const swapSourceTarget = (source, target) => {
+    if (!source || !target) return;
+    const tempColumns = [[...columns[0]], [...columns[1]]];
+
+    let sourceRowIndex = tempColumns[0].findIndex((item) => item === source);
+    let sourceColumnIndex = 0;
+    if (sourceRowIndex < 0) {
+      sourceColumnIndex = 1;
+      sourceRowIndex = tempColumns[1].findIndex((item) => item === source);
+    }
+
+    let targetRowIndex = tempColumns[0].findIndex((item) => item === target);
+    let targetColumnIndex = 0;
+    if (targetRowIndex < 0) {
+      targetColumnIndex = 1;
+      targetRowIndex = tempColumns[1].findIndex((item) => item === target);
+    }
+
+    const tempSource = tempColumns[sourceColumnIndex][sourceRowIndex];
+    tempColumns[sourceColumnIndex][sourceRowIndex] =
+      tempColumns[targetColumnIndex][targetRowIndex];
+
+    tempColumns[targetColumnIndex][targetRowIndex] = tempSource;
+
+    setColumns(tempColumns);
+  };
+
   useEffect(() => {
     setColumns([
       [sections.project, sections.education, sections.summary],
@@ -254,18 +285,55 @@ function Resume(props) {
     ]);
   }, []);
 
+  useEffect(() => {
+    swapSourceTarget(source, target);
+  }, [source]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!props.activeColor || !container) return;
+
+    container.style.setProperty("--color", props.activeColor);
+  }, [props.activeColor]);
+
+
   return (
-    <div className={styles.container}>
+    <div ref={ref}>
+      <div ref={containerRef} className={styles.container}>
         <div className={styles.header}>
-            <p className={styles.heading}>Name</p>
-            <p className={styles.subheading}>Software Developer</p>
+            <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
+            <p className={styles.subheading}>{info.basicInfo?.detail.title}</p>
 
             <div className={styles.links}>
-                <a className={styles.link}><AtSign /> email@email.com</a>
-                <a className={styles.link}><Phone /> 9999999999</a>
-                <a className={styles.link}><Linkedin />link.com/sdbhfuhehb</a>
-                <a className={styles.link}><GitHub />github.com/username</a>
-            </div>
+            {info.basicInfo?.detail?.email ? (
+              <a className={styles.link} type="email">
+                <AtSign /> {info.basicInfo?.detail?.email}
+              </a>
+            ) : (
+              <span />
+            )}
+            {info.basicInfo?.detail?.phone ? (
+              <a className={styles.link}>
+                <Phone /> {info.basicInfo?.detail?.phone}
+              </a>
+            ) : (
+              <span />
+            )}
+            {info.basicInfo?.detail?.linkedin ? (
+              <a className={styles.link}>
+                <Linkedin /> {info.basicInfo?.detail?.linkedin}
+              </a>
+            ) : (
+              <span />
+            )}
+            {info.basicInfo?.detail?.github ? (
+              <a className={styles.link}>
+                <GitHub /> {info.basicInfo?.detail?.github}
+              </a>
+            ) : (
+              <span />
+            )}
+          </div>
         </div>
         
         <div className={styles.main}>
@@ -281,8 +349,9 @@ function Resume(props) {
           </div>
         </div>
         
+      </div>
     </div>
   )
-}
+})
 
 export default Resume

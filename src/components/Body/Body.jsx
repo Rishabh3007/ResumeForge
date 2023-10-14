@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from "./Body.module.css";
 import { Download } from 'react-feather';
+import ReactToPrint from 'react-to-print';
 import Editor from '../Editor/Editor';
 import Resume from '../Resume/Resume';
 
@@ -22,6 +23,10 @@ function Body() {
     summary: "Summary",
     other: "Other",
   };
+
+  const resumeRef = useRef()
+
+  const [activeColor, setActiveColor] = useState(colors[0]);
 
   const [resumeInformation, setResumeInformation] = useState({
     [sections.basicInfo]: {
@@ -74,13 +79,22 @@ function Body() {
                     <span
                     key={item}
                     style={{ backgroundColor: item }}
-                    className={styles.color}
+                    className={`${styles.color} ${activeColor === item ? styles.active : ""}`}
+                    onClick={() => setActiveColor(item)}
                     />
                 ))}
             </div>
-            <button className={styles.button}>Download 
-            <Download />
-            </button>
+            <ReactToPrint
+              trigger={() => {
+                return (
+                  <button 
+                    className={styles.button}>       Download <Download />
+                  </button>
+                );
+              }}
+              content={() => resumeRef.current}
+            />
+            
         </div>
         <div className={styles.main}>
             <Editor sections={sections} information={resumeInformation}
@@ -88,8 +102,10 @@ function Body() {
             />
 
             <Resume
+              ref={resumeRef}
               sections={sections}
               information={resumeInformation}
+              activeColor={activeColor}
             />
         </div>
     </div>

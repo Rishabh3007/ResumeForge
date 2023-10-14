@@ -183,6 +183,14 @@ function Editor(props) {
     <div className={styles.detail}>
       <div className={styles.row}>
         <InputControl
+          label="Title"
+          value={values.title}
+          placeholder="Enter title eg. B-tech"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, title: event.target.value }))
+          }
+        />
+        <InputControl
           label="College/School Name"
           placeholder="Enter College/School Name"
           value={values.college}
@@ -190,22 +198,12 @@ function Editor(props) {
             setValues((prev) => ({ ...prev, college: event.target.value }))
           }
         />
-        <InputControl
-          label="Qualification"
-          placeholder="Enter Qualification eg. B.Tech"
-          value={values.qualification}
-          onChange={(event) =>
-            setValues((prev) => ({
-              ...prev,
-              qualification: event.target.value,
-            }))
-          }
-        />
       </div>
       <div className={styles.row}>
         <InputControl
           label="Start Date"
           placeholder="Enter Start Date"
+          type=  "date"
           value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
@@ -214,6 +212,7 @@ function Editor(props) {
         <InputControl
           label="End Date"
           placeholder="Enter End Date"
+          type=  "date"
           value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
@@ -540,6 +539,7 @@ function Editor(props) {
           ? activeInfo.details[0]?.startDate || ""
           : "",
         endDate: activeInfo?.details ? activeInfo.details[0]?.endDate || "" : "",
+
         points: activeInfo?.details
           ? activeInfo.details[0]?.points
             ? [...activeInfo.details[0]?.points]

@@ -34,6 +34,9 @@
     cursor: pointer;
     background-color: blue;
 }
+.color.active{
+    border: 2px solid #000;
+}
 
 .toolbar .button{
     padding: 8px 16px;
