@@ -153,3 +153,7 @@
 .hidden{
     display: none;
 }
+
+.skillSub{
+    color: var(--color);
+}

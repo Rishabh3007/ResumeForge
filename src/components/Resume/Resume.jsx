@@ -20,7 +20,7 @@ const Resume = forwardRef((props,ref) => {
     education: information[sections.education],
     basicInfo: information[sections.basicInfo],
     summary: information[sections.summary],
-    other: information[sections.other],
+    skill: information[sections.skill],
   };
 
   const getFormattedDate = (value) => {
@@ -233,19 +233,54 @@ const Resume = forwardRef((props,ref) => {
         </div>
       </div>
     ),
-    [sections.other]: (
+    [sections.skill]: (
       <div
-        key={"other"}
+        key={"skill"}
         draggable
-        onDragOver={() => seTarget(info.other?.id)}
-        onDragEnd={() => setSource(info.other?.id)}
+        onDragOver={() => seTarget(info.skill?.id)}
+        onDragEnd={() => setSource(info.skill?.id)}
         className={`${styles.section} ${
-          info.other?.sectionTitle ? "" : styles.hidden
+          info.skill?.sectionTitle ? "" : styles.hidden
         }`}
       >
-        <div className={styles.sectionTitle}>{info.other?.sectionTitle}</div>
+        <div className={styles.sectionTitle}>{info.skill?.sectionTitle}</div>
         <div className={styles.content}>
-          <p className={styles.overview}>{info?.other?.detail}</p>
+            {
+              info.skill?.detail?.skillSub1 ? (
+                <li>
+                  <span className={styles.skillSub}>
+                    {info.skill?.detail?.skillSub1}:  
+                  </span><span>    </span>    
+                  <span className={styles.skills}>
+                    {info.skill?.detail?.skills1}
+                  </span>
+                </li>
+              ) : (<span></span>)
+            }
+            {
+              info.skill?.detail?.skillSub2 ? (
+                <li>
+                  <span className={styles.skillSub}>
+                    {info.skill?.detail?.skillSub2}:  
+                  </span><span>    </span>    
+                  <span className={styles.skills}>
+                    {info.skill?.detail?.skills2}
+                  </span>
+                </li>
+              ) : (<span></span>)
+            }
+            {
+              info.skill?.detail?.skillSub3 ? (
+                <li>
+                  <span className={styles.skillSub}>
+                    {info.skill?.detail?.skillSub3}:  
+                  </span><span>    </span>    
+                  <span className={styles.skills}>
+                    {info.skill?.detail?.skills3}
+                  </span>
+                </li>
+              ) : (<span></span>)
+            }
         </div>
       </div>
     ),
@@ -281,7 +316,7 @@ const Resume = forwardRef((props,ref) => {
   useEffect(() => {
     setColumns([
       [sections.project, sections.education, sections.summary],
-      [sections.workExp, sections.achievement, sections.other],
+      [sections.workExp, sections.achievement, sections.skill],
     ]);
   }, []);
 

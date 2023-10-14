@@ -21,7 +21,7 @@ function Body() {
     education: "Education",
     achievement: "Achievement",
     summary: "Summary",
-    other: "Other",
+    skill: "Skill",
   };
 
   const resumeRef = useRef()
@@ -59,10 +59,10 @@ function Body() {
       sectionTitle: sections.summary,
       detail: "",
     },
-    [sections.other]: {
-      id: sections.other,
-      sectionTitle: sections.other,
-      detail: "",
+    [sections.skill]: {
+      id: sections.skill,
+      sectionTitle: sections.skill,
+      detail: {},
     },
   });
 

@@ -317,16 +317,75 @@ function Editor(props) {
     </div>
   );
 
-  const otherBody = (
+  // const otherBody = (
+  //   <div className={styles.detail}>
+  //     <InputControl
+  //       label="Other"
+  //       placeholder="Enter Other"
+  //       value={values.other}
+  //       onChange={(event) =>
+  //         setValues((prev) => ({ ...prev, other: event.target.value }))
+  //       }
+  //     />
+  //   </div>
+  // );
+
+  const skillBody = (
     <div className={styles.detail}>
-      <InputControl
-        label="Other"
-        placeholder="Enter Other"
-        value={values.other}
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, other: event.target.value }))
-        }
-      />
+      <div className={styles.row}>
+        <InputControl 
+          label="Skill Subject"
+          placeholder="Enter Skill Subject eg. soft or technical skill"
+          value={values.skillSub1}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skillSub1: event.target.value }))
+          }
+        />
+        <InputControl 
+          label="Skills"
+          placeholder="Enter Skills related to subject"
+          value={values.skills1}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skills1: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl 
+          label="Skill Subject"
+          placeholder="Enter Skill Subject eg. soft or technical skill"
+          value={values.skillSub2}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skillSub2: event.target.value }))
+          }
+        />
+        <InputControl 
+          label="Skills"
+          placeholder="Enter Skills related to subject"
+          value={values.skills2}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skills2: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl 
+          label="Skill Subject"
+          placeholder="Enter Skill Subject eg. soft or technical skill"
+          value={values.skillSub3}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skillSub3: event.target.value }))
+          }
+        />
+        <InputControl 
+          label="Skills"
+          placeholder="Enter Skills related to subject"
+          value={values.skills3}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, skills3: event.target.value }))
+          }
+        />
+      </div>
     </div>
   );
 
@@ -344,8 +403,8 @@ function Editor(props) {
         return achievementsBody;
       case sections.summary:
         return summaryBody;
-      case sections.other:
-        return otherBody;
+      case sections.skill:
+        return skillBody;
       default:
         return null;
     }
@@ -463,13 +522,20 @@ function Editor(props) {
         }));
         break;
       }
-      case sections.other: {
-        const tempDetail = values.other;
+      case sections.skill: {
+        const tempDetail = {
+          skillSub1: values.skillSub1,
+          skillSub2: values.skillSub2,
+          skillSub3: values.skillSub3,
+          skills1: values.skills1,
+          skills2: values.skills2,
+          skills3: values.skills3,
+        };
 
-        props.setInformation((prev) => ({
+        props.setInformation((prev)=>({
           ...prev,
-          [sections.other]: {
-            ...prev[sections.other],
+          [sections.skill]: {
+            ...prev[sections.skill],
             detail: tempDetail,
             sectionTitle,
           },
@@ -557,7 +623,12 @@ function Editor(props) {
         phone: activeInfo?.detail?.phone || "",
         email: activeInfo?.detail?.email || "",
         summary: activeInfo?.detail?.summary || "",
-        other: activeInfo?.detail?.other || "",
+        skillSub1: activeInfo?.detail?.skillSub1 || "",
+        skillSub2: activeInfo?.detail?.skillSub1 || "",
+        skillSub3: activeInfo?.detail?.skillSub1 || "",
+        skills1: activeInfo?.detail?.skills1 || "",
+        skills2: activeInfo?.detail?.skills2 || "",
+        skills3: activeInfo?.detail?.skills3 || "",
       });
     }, [activeSectionKey]);
 
