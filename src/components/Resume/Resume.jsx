@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef, useState } from 'react'
 import { AtSign, Phone, Linkedin, GitHub } from 'react-feather'
-import styles from "./Resume.module.css"
+// import styles from "./Template1.module.css"
 import { useEffect } from 'react';
 import { Calendar, MapPin, Paperclip } from 'react-feather';
 
@@ -8,6 +8,8 @@ const Resume = forwardRef((props,ref) => {
   const information = props.information;
   const sections = props.sections;
   const containerRef = useRef();
+  const Template = props.selectedTemplate;
+  const styles = require(`./${Template}.module.css`).default;
 
   const [columns, setColumns] = React.useState([[],[]]);
   const [source, setSource] = useState("");
@@ -73,7 +75,7 @@ const Resume = forwardRef((props,ref) => {
               )}
               {item.location ? (
                 <p className={styles.date}>
-                  <MapPin /> Remote
+                  <MapPin /> {item.location}
                 </p>
               ) : (
                 <span />

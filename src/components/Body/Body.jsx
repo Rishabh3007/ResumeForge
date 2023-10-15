@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef, useState } from 'react';
 import styles from "./Body.module.css";
 import { Download } from 'react-feather';
 import ReactToPrint from 'react-to-print';
@@ -27,6 +27,11 @@ function Body() {
   const resumeRef = useRef()
 
   const [activeColor, setActiveColor] = useState(colors[0]);
+  const [selectedTemplate, setSelectedTemplate] = useState("Template1");
+
+  const handleTemplateClick = (template) => {
+    setSelectedTemplate(template);
+  };
 
   const [resumeInformation, setResumeInformation] = useState({
     [sections.basicInfo]: {
@@ -66,9 +71,9 @@ function Body() {
     },
   });
 
-  useEffect(()=>{
-    console.log(resumeInformation)
-  },[resumeInformation])
+  // useEffect(()=>{
+  //   console.log(resumeInformation)
+  // },[resumeInformation])
 
   return (
     <div className={styles.container}>
@@ -88,7 +93,7 @@ function Body() {
               trigger={() => {
                 return (
                   <button 
-                    className={styles.button}>       Download <Download />
+                    className={styles.button}> Download <Download />
                   </button>
                 );
               }}
@@ -99,9 +104,17 @@ function Body() {
         <div className={styles.main}>
             <Editor sections={sections} information={resumeInformation}
               setInformation = {setResumeInformation}
-            />
+            /> 
+            
+
+            <div className={styles.templates}>
+              <button  onClick={() => handleTemplateClick('Template1')}>Template 1</button>
+              <button onClick={() => handleTemplateClick('Template2')}>Template 2</button>
+            </div>
+            
 
             <Resume
+              selectedTemplate={selectedTemplate}
               ref={resumeRef}
               sections={sections}
               information={resumeInformation}
