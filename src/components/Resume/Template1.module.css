@@ -107,7 +107,7 @@
 .content .subtitle{
     font-size: 0.875rem;
     font-weight: bold;
-    color: grey;
+    color: rgb(93, 93, 93);
 }
 
 .content .overview{
@@ -156,4 +156,17 @@
 
 .skillSub{
     color: var(--color);
+}
+
+/* .profileContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+} */
+
+.profileLink{
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
 }

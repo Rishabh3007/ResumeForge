@@ -130,14 +130,6 @@ function Editor(props) {
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
         />
-        <InputControl
-          label="Overview"
-          placeholder="Enter basic overview"
-          value={values.overview}
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, overview: event.target.value }))
-          }
-        />
       </div>
       <div className={styles.row}>
         <InputControl
@@ -216,6 +208,16 @@ function Editor(props) {
           value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label = "Grade"
+          placeholder="Enter Grade"
+          value={values.grade}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, grade: event.target.value }))
           }
         />
       </div>
@@ -389,6 +391,101 @@ function Editor(props) {
     </div>
   );
 
+  const profileLinksBody = (
+    <div className={styles.detail}>
+      <div className={styles.row}>
+        <InputControl
+          label="Profile Name"
+          placeholder="Enter name of profile eg. Leetcode"
+          value={values.name1}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name1: event.target.value }))
+          }
+        />
+        <InputControl
+          label = "Profile Link"
+          placeholder="Enter link of profile"
+          value={values.link1}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, link1: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Profile Name"
+          placeholder="Enter name of profile eg. Codechef"
+          value={values.name2}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name2: event.target.value }))
+          }
+        />
+        <InputControl
+          label = "Profile Link"
+          placeholder="Enter link of profile"
+          value={values.link2}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, link2: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Profile Name"
+          placeholder="Enter name of profile eg. Codeforces"
+          value={values.name3}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name3: event.target.value }))
+          }
+        />
+        <InputControl
+          label = "Profile Link"
+          placeholder="Enter link of profile"
+          value={values.link3}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, link3: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Profile Name"
+          placeholder="Enter name of profile eg. Hackerrank"
+          value={values.name4}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name4: event.target.value }))
+          }
+        />
+        <InputControl
+          label = "Profile Link"
+          placeholder="Enter link of profile"
+          value={values.link4}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, link4: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Profile Name"
+          placeholder="Enter name of profile eg. Hackerearth"
+          value={values.name5}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name5: event.target.value }))
+          }
+        />
+        <InputControl
+          label = "Profile Link"
+          placeholder="Enter link of profile"
+          value={values.link5}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, link5: event.target.value }))
+          }
+        />
+      </div>
+    </div>
+  );
+
   const generateBody = () => {
     switch (sections[activeSectionKey]) {
       case sections.basicInfo:
@@ -405,6 +502,8 @@ function Editor(props) {
         return summaryBody;
       case sections.skill:
         return skillBody;
+      case sections.profileLinks:
+        return profileLinksBody;
       default:
         return null;
     }
@@ -459,7 +558,6 @@ function Editor(props) {
         const tempDetail = {
           link: values.link,
           title: values.title,
-          overview: values.overview,
           github: values.github,
           points: values.points,
         };
@@ -482,6 +580,7 @@ function Editor(props) {
           college: values.college,
           startDate: values.startDate,
           endDate: values.endDate,
+          grade: values.grade,
         };
         const tempDetails = [...information[sections.education]?.details];
         tempDetails[activeDetailIndex] = tempDetail;
@@ -542,6 +641,30 @@ function Editor(props) {
         }));
         break;
       }
+      case sections.profileLinks: {
+        const tempDetail = {
+          name1: values.name1,
+          name2: values.name2,
+          name3: values.name3,
+          name4: values.name4,
+          name5: values.name5,
+          link1: values.link1,
+          link2: values.link2,
+          link3: values.link3,
+          link4: values.link4,
+          link5: values.link5,
+        };
+
+        props.setInformation((prev)=>({
+          ...prev,
+          [sections.profileLinks]: {
+            ...prev[sections.profileLinks],
+            detail: tempDetail,
+            sectionTitle,
+          },
+        }));
+        break;
+      }
       default:
         return null;
     }
@@ -585,9 +708,6 @@ function Editor(props) {
     setActiveDetailIndex(0);
     setValues({
         name: activeInfo?.detail?.name || "",
-        overview: activeInfo?.details
-          ? activeInfo.details[0]?.overview || ""
-          : "",
         link: activeInfo?.details ? activeInfo.details[0]?.link || "" : "",
         certificationLink: activeInfo?.details
           ? activeInfo.details[0]?.certificationLink || ""
@@ -605,7 +725,7 @@ function Editor(props) {
           ? activeInfo.details[0]?.startDate || ""
           : "",
         endDate: activeInfo?.details ? activeInfo.details[0]?.endDate || "" : "",
-
+        grade: activeInfo?.details ? activeInfo.details[0]?.grade || "" : "",
         points: activeInfo?.details
           ? activeInfo.details[0]?.points
             ? [...activeInfo.details[0]?.points]
@@ -629,6 +749,16 @@ function Editor(props) {
         skills1: activeInfo?.detail?.skills1 || "",
         skills2: activeInfo?.detail?.skills2 || "",
         skills3: activeInfo?.detail?.skills3 || "",
+        name1: activeInfo?.detail?.name1 || "",
+        name2: activeInfo?.detail?.name2 || "",
+        name3: activeInfo?.detail?.name3 || "",
+        name4: activeInfo?.detail?.name4 || "",
+        name5: activeInfo?.detail?.name5 || "",
+        link1: activeInfo?.detail?.link1 || "",
+        link2: activeInfo?.detail?.link2 || "",
+        link3: activeInfo?.detail?.link3 || "",
+        link4: activeInfo?.detail?.link4 || "",
+        link5: activeInfo?.detail?.link5 || "",
       });
     }, [activeSectionKey]);
 
@@ -642,7 +772,6 @@ function Editor(props) {
 
     const activeInfo = information[sections[activeSectionKey]];
     setValues({
-      overview: activeInfo.details[activeDetailIndex]?.overview || "",
       link: activeInfo.details[activeDetailIndex]?.link || "",
       certificationLink:
         activeInfo.details[activeDetailIndex]?.certificationLink || "",
@@ -655,6 +784,7 @@ function Editor(props) {
       linkedin: activeInfo.details[activeDetailIndex]?.linkedin || "",
       github: activeInfo.details[activeDetailIndex]?.github || "",
       college: activeInfo.details[activeDetailIndex]?.college || "",
+      grade: activeInfo.details[activeDetailIndex]?.grade || "",
     });
   },[activeDetailIndex]);
 

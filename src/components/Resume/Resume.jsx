@@ -1,17 +1,17 @@
-import React, { forwardRef, useRef, useState } from 'react'
-import { AtSign, Phone, Linkedin, GitHub } from 'react-feather'
+import React, { forwardRef, useRef, useState } from "react";
+import { AtSign, Phone, Linkedin, GitHub } from "react-feather";
 // import styles from "./Template1.module.css"
-import { useEffect } from 'react';
-import { Calendar, MapPin, Paperclip } from 'react-feather';
+import { useEffect } from "react";
+import { Calendar, MapPin, Paperclip } from "react-feather";
 
-const Resume = forwardRef((props,ref) => {
+const Resume = forwardRef((props, ref) => {
   const information = props.information;
   const sections = props.sections;
   const containerRef = useRef();
   const Template = props.selectedTemplate;
   const styles = require(`./${Template}.module.css`).default;
 
-  const [columns, setColumns] = React.useState([[],[]]);
+  const [columns, setColumns] = React.useState([[], []]);
   const [source, setSource] = useState("");
   const [target, seTarget] = useState("");
 
@@ -23,6 +23,7 @@ const Resume = forwardRef((props,ref) => {
     basicInfo: information[sections.basicInfo],
     summary: information[sections.summary],
     skill: information[sections.skill],
+    profileLinks: information[sections.profileLinks],
   };
 
   const getFormattedDate = (value) => {
@@ -47,39 +48,46 @@ const Resume = forwardRef((props,ref) => {
         <div className={styles.content}>
           {info.workExp?.details?.map((item) => (
             <div className={styles.item} key={item.title}>
-              {item.title ? (
-                <p className={styles.title}>{item.title}</p>
-              ) : (
-                <span />
-              )}
-              {item.companyName ? (
-                <p className={styles.subTitle}>{item.companyName}</p>
-              ) : (
-                <span />
-              )}
-              {item.certificationLink ? (
-                <a className={styles.link} href={item.certificationLink}>
-                  <Paperclip />
-                  {item.certificationLink}
-                </a>
-              ) : (
-                <span />
-              )}
-              {item.startDate && item.endDate ? (
-                <div className={styles.date}>
-                  <Calendar /> {getFormattedDate(item.startDate)}-
-                  {getFormattedDate(item.endDate)}
+              <div className={styles.box}>
+                <div className={styles.box1}>
+                  {item.title ? (
+                    <p className={styles.title}>{item.title}</p>
+                  ) : (
+                    <span />
+                  )}
+                  {item.companyName ? (
+                    <p className={styles.subtitle}>{item.companyName}</p>
+                  ) : (
+                    <span />
+                  )}
+                  {item.location ? (
+                    <p className={styles.date}>
+                      <MapPin /> {item.location}
+                    </p>
+                  ) : (
+                    <span />
+                  )}
                 </div>
-              ) : (
-                <div />
-              )}
-              {item.location ? (
-                <p className={styles.date}>
-                  <MapPin /> {item.location}
-                </p>
-              ) : (
-                <span />
-              )}
+                <div className={styles.box2}>
+                  {item.certificationLink ? (
+                    <a className={styles.link} href={item.certificationLink}>
+                      <Paperclip />
+                      {item.certificationLink}
+                    </a>
+                  ) : (
+                    <span />
+                  )}
+                  {item.startDate && item.endDate ? (
+                    <div className={styles.date}>
+                      <Calendar /> {getFormattedDate(item.startDate)}-
+                      {getFormattedDate(item.endDate)}
+                    </div>
+                  ) : (
+                    <div />
+                  )}
+                </div>
+              </div>
+
               {item.points?.length > 0 ? (
                 <ul className={styles.points}>
                   {item.points?.map((elem, index) => (
@@ -110,32 +118,30 @@ const Resume = forwardRef((props,ref) => {
         <div className={styles.content}>
           {info.project?.details?.map((item) => (
             <div className={styles.item}>
-              {item.title ? (
-                <p className={styles.title}>{item.title}</p>
-              ) : (
-                <span />
-              )}
-              {item.link ? (
-                <a className={styles.link} href={item.link}>
-                  <Paperclip />
-                  {item.link}
-                </a>
-              ) : (
-                <span />
-              )}
-              {item.github ? (
-                <a className={styles.link} href={item.github}>
-                  <GitHub />
-                  {item.github}
-                </a>
-              ) : (
-                <span />
-              )}
-              {item.overview ? (
-                <p className={styles.overview}>{item.overview} </p>
-              ) : (
-                <span />
-              )}
+              <div className={styles.box1}>
+                  {item.title ? (
+                    <p className={styles.title}>{item.title}</p>
+                  ) : (
+                    <span />
+                  )}
+                  {item.link ? (
+                    <a className={styles.link} href={item.link}>
+                      <Paperclip />
+                      {item.link}
+                    </a>
+                  ) : (
+                    <span />
+                  )}
+                  {item.github ? (
+                    <a className={styles.link} href={item.github}>
+                      <GitHub />
+                      {item.github}
+                    </a>
+                  ) : (
+                    <span />
+                  )}
+              </div>
+
               {item.points?.length > 0 ? (
                 <ul className={styles.points}>
                   {item.points?.map((elem, index) => (
@@ -174,7 +180,7 @@ const Resume = forwardRef((props,ref) => {
                 <span />
               )}
               {item.college ? (
-                <p className={styles.subTitle}>{item.college}</p>
+                <p className={styles.subtitle}>{item.college}</p>
               ) : (
                 <span />
               )}
@@ -185,6 +191,11 @@ const Resume = forwardRef((props,ref) => {
                 </div>
               ) : (
                 ""
+              )}
+              {item.grade ? (
+                <p className={styles.subtitle}>{item.grade}</p>
+              ) : (
+                <span />
               )}
             </div>
           ))}
@@ -247,42 +258,122 @@ const Resume = forwardRef((props,ref) => {
       >
         <div className={styles.sectionTitle}>{info.skill?.sectionTitle}</div>
         <div className={styles.content}>
-            {
-              info.skill?.detail?.skillSub1 ? (
-                <li>
-                  <span className={styles.skillSub}>
-                    {info.skill?.detail?.skillSub1}:  
-                  </span><span>    </span>    
-                  <span className={styles.skills}>
-                    {info.skill?.detail?.skills1}
-                  </span>
-                </li>
-              ) : (<span></span>)
-            }
-            {
-              info.skill?.detail?.skillSub2 ? (
-                <li>
-                  <span className={styles.skillSub}>
-                    {info.skill?.detail?.skillSub2}:  
-                  </span><span>    </span>    
-                  <span className={styles.skills}>
-                    {info.skill?.detail?.skills2}
-                  </span>
-                </li>
-              ) : (<span></span>)
-            }
-            {
-              info.skill?.detail?.skillSub3 ? (
-                <li>
-                  <span className={styles.skillSub}>
-                    {info.skill?.detail?.skillSub3}:  
-                  </span><span>    </span>    
-                  <span className={styles.skills}>
-                    {info.skill?.detail?.skills3}
-                  </span>
-                </li>
-              ) : (<span></span>)
-            }
+          {info.skill?.detail?.skillSub1 ? (
+            <li>
+              <span className={styles.skillSub}>
+                {info.skill?.detail?.skillSub1}:
+              </span>
+              <span> </span>
+              <span className={styles.skills}>
+                {info.skill?.detail?.skills1}
+              </span>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.skill?.detail?.skillSub2 ? (
+            <li>
+              <span className={styles.skillSub}>
+                {info.skill?.detail?.skillSub2}:
+              </span>
+              <span> </span>
+              <span className={styles.skills}>
+                {info.skill?.detail?.skills2}
+              </span>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.skill?.detail?.skillSub3 ? (
+            <li>
+              <span className={styles.skillSub}>
+                {info.skill?.detail?.skillSub3}:
+              </span>
+              <span> </span>
+              <span className={styles.skills}>
+                {info.skill?.detail?.skills3}
+              </span>
+            </li>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
+    ),
+    [sections.profileLinks]: (
+      <div
+        key={"profileLinks"}
+        draggable
+        onDragOver={() => seTarget(info.profileLinks?.id)}
+        onDragEnd={() => setSource(info.profileLinks?.id)}
+        className={`${styles.section} ${
+          info.profileLinks?.sectionTitle ? "" : styles.hidden
+        }`}
+      >
+        <div className={styles.sectionTitle}>
+          {info.profileLinks?.sectionTitle}
+        </div>
+        <div className={`${styles.content} ${styles.profileContainer}`}>
+          {info.profileLinks?.detail?.name1 ? (
+            <li>
+              <a
+                href={info.profileLinks?.detail?.link1}
+                className={styles.profileLink}
+              >
+                {info.profileLinks?.detail?.name1}
+              </a>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.profileLinks?.detail?.name2 ? (
+            <li>
+              <a
+                href={info.profileLinks?.detail?.link2}
+                className={styles.profileLink}
+              >
+                {info.profileLinks?.detail?.name2}
+              </a>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.profileLinks?.detail?.name3 ? (
+            <li>
+              <a
+                href={info.profileLinks?.detail?.link3}
+                className={styles.profileLink}
+              >
+                {info.profileLinks?.detail?.name3}
+              </a>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.profileLinks?.detail?.name4 ? (
+            <li>
+              <a
+                href={info.profileLinks?.detail?.link4}
+                className={styles.profileLink}
+              >
+                {info.profileLinks?.detail?.name4}
+              </a>
+            </li>
+          ) : (
+            <span></span>
+          )}
+          {info.profileLinks?.detail?.name5 ? (
+            <li>
+              <a
+                href={info.profileLinks?.detail?.link5}
+                className={styles.profileLink}
+              >
+                {info.profileLinks?.detail?.name5}
+              </a>
+            </li>
+          ) : (
+            <span></span>
+          )}
         </div>
       </div>
     ),
@@ -317,7 +408,12 @@ const Resume = forwardRef((props,ref) => {
 
   useEffect(() => {
     setColumns([
-      [sections.project, sections.education, sections.summary],
+      [
+        sections.project,
+        sections.education,
+        sections.summary,
+        sections.profileLinks,
+      ],
       [sections.workExp, sections.achievement, sections.skill],
     ]);
   }, []);
@@ -333,15 +429,14 @@ const Resume = forwardRef((props,ref) => {
     container.style.setProperty("--color", props.activeColor);
   }, [props.activeColor]);
 
-
   return (
     <div ref={ref}>
       <div ref={containerRef} className={styles.container}>
         <div className={styles.header}>
-            <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
-            <p className={styles.subheading}>{info.basicInfo?.detail.title}</p>
+          <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
+          <p className={styles.subheading}>{info.basicInfo?.detail.title}</p>
 
-            <div className={styles.links}>
+          <div className={styles.links}>
             {info.basicInfo?.detail?.email ? (
               <a className={styles.link} type="email">
                 <AtSign /> {info.basicInfo?.detail?.email}
@@ -372,23 +467,18 @@ const Resume = forwardRef((props,ref) => {
             )}
           </div>
         </div>
-        
+
         <div className={styles.main}>
           <div className={styles.col1}>
-            {
-              columns[0].map((item) => sectionDiv[item])
-            }
+            {columns[0].map((item) => sectionDiv[item])}
           </div>
           <div className={styles.col2}>
-            {
-              columns[1].map((item) => sectionDiv[item])
-            }
+            {columns[1].map((item) => sectionDiv[item])}
           </div>
         </div>
-        
       </div>
     </div>
-  )
-})
+  );
+});
 
-export default Resume
+export default Resume;

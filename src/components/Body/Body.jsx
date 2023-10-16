@@ -1,4 +1,4 @@
-import React, {useRef, useState } from 'react';
+import React, {useEffect,useRef, useState } from 'react';
 import styles from "./Body.module.css";
 import { Download } from 'react-feather';
 import ReactToPrint from 'react-to-print';
@@ -22,6 +22,7 @@ function Body() {
     achievement: "Achievement",
     summary: "Summary",
     skill: "Skill",
+    profileLinks: "Profile Links",
   };
 
   const resumeRef = useRef()
@@ -69,11 +70,16 @@ function Body() {
       sectionTitle: sections.skill,
       detail: {},
     },
+    [sections.profileLinks]:{
+      id: sections.profileLinks,
+      sectionTitle: sections.profileLinks,
+      detail: {},
+    }
   });
 
-  // useEffect(()=>{
-  //   console.log(resumeInformation)
-  // },[resumeInformation])
+  useEffect(()=>{
+    console.log(resumeInformation)
+  },[resumeInformation])
 
   return (
     <div className={styles.container}>
