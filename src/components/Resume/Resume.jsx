@@ -49,14 +49,14 @@ const Resume = forwardRef((props, ref) => {
           {info.workExp?.details?.map((item) => (
             <div className={styles.item} key={item.title}>
               <div className={styles.box}>
-                <div className={styles.box1}>
-                  {item.title ? (
-                    <p className={styles.title}>{item.title}</p>
+                <div>
+                  {item.companyName ? (
+                    <p className={styles.subtitle}>{item.companyName}</p>
                   ) : (
                     <span />
                   )}
-                  {item.companyName ? (
-                    <p className={styles.subtitle}>{item.companyName}</p>
+                  {item.title ? (
+                    <p className={styles.title}>{item.title}</p>
                   ) : (
                     <span />
                   )}
@@ -68,18 +68,18 @@ const Resume = forwardRef((props, ref) => {
                     <span />
                   )}
                 </div>
-                <div className={styles.box2}>
+                <div>
                   {item.certificationLink ? (
                     <a className={styles.link} href={item.certificationLink}>
                       <Paperclip />
-                      {item.certificationLink}
+                      Certificate
                     </a>
                   ) : (
                     <span />
                   )}
                   {item.startDate && item.endDate ? (
                     <div className={styles.date}>
-                      <Calendar /> {getFormattedDate(item.startDate)}-
+                      <Calendar /> {getFormattedDate(item.startDate)} -{" "}
                       {getFormattedDate(item.endDate)}
                     </div>
                   ) : (
@@ -118,16 +118,19 @@ const Resume = forwardRef((props, ref) => {
         <div className={styles.content}>
           {info.project?.details?.map((item) => (
             <div className={styles.item}>
-              <div className={styles.box1}>
+              <div className={styles.projectBox}>
+                <div className={styles.box1}>
                   {item.title ? (
                     <p className={styles.title}>{item.title}</p>
                   ) : (
                     <span />
                   )}
+                </div>
+                <div className={styles.box2}>
                   {item.link ? (
                     <a className={styles.link} href={item.link}>
                       <Paperclip />
-                      {item.link}
+                      Deplyed Link
                     </a>
                   ) : (
                     <span />
@@ -135,11 +138,12 @@ const Resume = forwardRef((props, ref) => {
                   {item.github ? (
                     <a className={styles.link} href={item.github}>
                       <GitHub />
-                      {item.github}
+                      Github Link
                     </a>
                   ) : (
                     <span />
                   )}
+                </div>
               </div>
 
               {item.points?.length > 0 ? (
@@ -174,29 +178,35 @@ const Resume = forwardRef((props, ref) => {
         <div className={styles.content}>
           {info.education?.details?.map((item) => (
             <div className={styles.item}>
-              {item.title ? (
-                <p className={styles.title}>{item.title}</p>
-              ) : (
-                <span />
-              )}
-              {item.college ? (
-                <p className={styles.subtitle}>{item.college}</p>
-              ) : (
-                <span />
-              )}
-              {item.startDate && item.endDate ? (
-                <div className={styles.date}>
-                  <Calendar /> {getFormattedDate(item.startDate)} -
-                  {getFormattedDate(item.endDate)}
+              <div className={styles.educationBox}>
+                <div className={styles.educationBox1}>
+                  {item.college ? (
+                    <p className={styles.subtitle}>{item.college}</p>
+                  ) : (
+                    <span />
+                  )}
+                  {item.title ? (
+                    <p className={styles.title}>{item.title}</p>
+                  ) : (
+                    <span />
+                  )}
                 </div>
-              ) : (
-                ""
-              )}
-              {item.grade ? (
-                <p className={styles.subtitle}>{item.grade}</p>
-              ) : (
-                <span />
-              )}
+                <div className={styles.educationBox1}>
+                  {item.startDate && item.endDate ? (
+                    <div className={styles.date}>
+                      <Calendar /> {getFormattedDate(item.startDate)} -
+                      {getFormattedDate(item.endDate)}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {item.grade ? (
+                    <p className={styles.subtitle}>{item.grade}</p>
+                  ) : (
+                    <span />
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -217,7 +227,7 @@ const Resume = forwardRef((props, ref) => {
         </div>
         <div className={styles.content}>
           {info.achievement?.points?.length > 0 ? (
-            <ul className={styles.numbered}>
+            <ul className={styles.points}>
               {info.achievement?.points?.map((elem, index) => (
                 <li className={styles.point} key={elem + index}>
                   {elem}
@@ -260,7 +270,7 @@ const Resume = forwardRef((props, ref) => {
         <div className={styles.content}>
           {info.skill?.detail?.skillSub1 ? (
             <li>
-              <span className={styles.skillSub}>
+              <span className={styles.subtitle}>
                 {info.skill?.detail?.skillSub1}:
               </span>
               <span> </span>
@@ -273,7 +283,7 @@ const Resume = forwardRef((props, ref) => {
           )}
           {info.skill?.detail?.skillSub2 ? (
             <li>
-              <span className={styles.skillSub}>
+              <span className={styles.subtitle}>
                 {info.skill?.detail?.skillSub2}:
               </span>
               <span> </span>
@@ -286,7 +296,7 @@ const Resume = forwardRef((props, ref) => {
           )}
           {info.skill?.detail?.skillSub3 ? (
             <li>
-              <span className={styles.skillSub}>
+              <span className={styles.subtitle}>
                 {info.skill?.detail?.skillSub3}:
               </span>
               <span> </span>
@@ -313,7 +323,7 @@ const Resume = forwardRef((props, ref) => {
         <div className={styles.sectionTitle}>
           {info.profileLinks?.sectionTitle}
         </div>
-        <div className={`${styles.content} ${styles.profileContainer}`}>
+        <div className={`${styles.profileContainer} `}>
           {info.profileLinks?.detail?.name1 ? (
             <li>
               <a
@@ -324,7 +334,7 @@ const Resume = forwardRef((props, ref) => {
               </a>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.profileLinks?.detail?.name2 ? (
             <li>
@@ -336,7 +346,7 @@ const Resume = forwardRef((props, ref) => {
               </a>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.profileLinks?.detail?.name3 ? (
             <li>
@@ -348,7 +358,7 @@ const Resume = forwardRef((props, ref) => {
               </a>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.profileLinks?.detail?.name4 ? (
             <li>
@@ -360,7 +370,7 @@ const Resume = forwardRef((props, ref) => {
               </a>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.profileLinks?.detail?.name5 ? (
             <li>
@@ -372,7 +382,7 @@ const Resume = forwardRef((props, ref) => {
               </a>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
         </div>
       </div>
@@ -438,7 +448,11 @@ const Resume = forwardRef((props, ref) => {
 
           <div className={styles.links}>
             {info.basicInfo?.detail?.email ? (
-              <a className={styles.link} type="email">
+              <a
+                className={styles.link}
+                type="email"
+                href={info.basicInfo?.detail?.email}
+              >
                 <AtSign /> {info.basicInfo?.detail?.email}
               </a>
             ) : (
@@ -452,15 +466,18 @@ const Resume = forwardRef((props, ref) => {
               <span />
             )}
             {info.basicInfo?.detail?.linkedin ? (
-              <a className={styles.link}>
-                <Linkedin /> {info.basicInfo?.detail?.linkedin}
+              <a
+                className={styles.link}
+                href={info.basicInfo?.detail?.linkedin}
+              >
+                <Linkedin /> Linkedin
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.github ? (
-              <a className={styles.link}>
-                <GitHub /> {info.basicInfo?.detail?.github}
+              <a className={styles.link} href={info.basicInfo?.detail?.github}>
+                <GitHub /> GitHub
               </a>
             ) : (
               <span />
