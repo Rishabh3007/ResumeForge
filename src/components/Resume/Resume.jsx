@@ -267,10 +267,10 @@ const Resume = forwardRef((props, ref) => {
         }`}
       >
         <div className={styles.sectionTitle}>{info.skill?.sectionTitle}</div>
-        <div className={styles.content}>
+        <div className={` ${styles.skillBox}`}>
           {info.skill?.detail?.skillSub1 ? (
             <li>
-              <span className={styles.subtitle}>
+              <span className={styles.skillSub}>
                 {info.skill?.detail?.skillSub1}:
               </span>
               <span> </span>
@@ -279,11 +279,11 @@ const Resume = forwardRef((props, ref) => {
               </span>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.skill?.detail?.skillSub2 ? (
             <li>
-              <span className={styles.subtitle}>
+              <span className={styles.skillSub}>
                 {info.skill?.detail?.skillSub2}:
               </span>
               <span> </span>
@@ -292,11 +292,11 @@ const Resume = forwardRef((props, ref) => {
               </span>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
           {info.skill?.detail?.skillSub3 ? (
             <li>
-              <span className={styles.subtitle}>
+              <span className={styles.skillSub}>
                 {info.skill?.detail?.skillSub3}:
               </span>
               <span> </span>
@@ -305,7 +305,7 @@ const Resume = forwardRef((props, ref) => {
               </span>
             </li>
           ) : (
-            <span></span>
+            ""
           )}
         </div>
       </div>
@@ -443,8 +443,10 @@ const Resume = forwardRef((props, ref) => {
     <div ref={ref}>
       <div ref={containerRef} className={styles.container}>
         <div className={styles.header}>
-          <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
-          <p className={styles.subheading}>{info.basicInfo?.detail.title}</p>
+          <div className={styles.headerBox}>
+            <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
+            <p className={styles.subheading}>{info.basicInfo?.detail.title}</p>
+          </div>
 
           <div className={styles.links}>
             {info.basicInfo?.detail?.email ? (
@@ -471,13 +473,6 @@ const Resume = forwardRef((props, ref) => {
                 href={info.basicInfo?.detail?.linkedin}
               >
                 <Linkedin /> Linkedin
-              </a>
-            ) : (
-              <span />
-            )}
-            {info.basicInfo?.detail?.github ? (
-              <a className={styles.link} href={info.basicInfo?.detail?.github}>
-                <GitHub /> GitHub
               </a>
             ) : (
               <span />

@@ -253,14 +253,6 @@ function Editor(props) {
             setValues((prev) => ({ ...prev, linkedin: event.target.value }))
           }
         />
-        <InputControl
-          label="Github Link"
-          placeholder="Enter Github Link"
-          value={values.github}
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, github: event.target.value }))
-          }
-        />
       </div>
       <div className={styles.row}>
         <InputControl
@@ -318,19 +310,6 @@ function Editor(props) {
       />
     </div>
   );
-
-  // const otherBody = (
-  //   <div className={styles.detail}>
-  //     <InputControl
-  //       label="Other"
-  //       placeholder="Enter Other"
-  //       value={values.other}
-  //       onChange={(event) =>
-  //         setValues((prev) => ({ ...prev, other: event.target.value }))
-  //       }
-  //     />
-  //   </div>
-  // );
 
   const skillBody = (
     <div className={styles.detail}>
@@ -516,7 +495,6 @@ function Editor(props) {
           name: values.name,
           title: values.title,
           linkedin: values.linkedin,
-          github: values.github,
           phone: values.phone,
           email: values.email,
         };

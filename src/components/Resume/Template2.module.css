@@ -1,8 +1,9 @@
 .container{
-  min-width: 500px;
+  /* min-width: 500px; */
   flex: 1.2;
   height: fit-content;
-  min-height: 900px;
+  min-height: 1120px;
+  max-height: 1120px;
   min-width: 700px;
   max-width: 850px;
   margin: 0 auto;
@@ -12,11 +13,13 @@
   flex-direction: column;
   gap: 12px;
   padding: 30px;
+  overflow: hidden;
 }
 
 .header{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .header .heading{
@@ -33,15 +36,12 @@
 
 .header .links{
   display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
   row-gap: 10px;
-  
 }
 
 .header .link{
-  font-size: 1rem;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -51,9 +51,9 @@
 }
 
 .header .link svg{
-  height: 18px;
-  width: 18px;
-  color: var(--color);
+  height: 15px;
+  width: 15px;
+  color: var(--color);  
 }
 
 .main {
@@ -113,13 +113,17 @@
   font-size: 1.1rem;
   font-weight: bold;
   color: rgb(49, 49, 49);
-  padding: 3.5px 0;
+  padding: 0 0 1px 0;
 }
 
 .box{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.box .title{
+  font-size: 1rem
 }
 
 .projectBox{
@@ -143,14 +147,14 @@
 .content .link{
   display: flex;
   gap: 5px;
-  font-size: 1.75;
+  font-size: 0.8rem;
   cursor: pointer;
   color: var(--color);
 }
 
 .content .link svg{
-  height: 14px;
-  width: 14px;
+  height: 13.5px;
+  width: 13.5px;
   color: var(--color);
 }
 
@@ -186,11 +190,24 @@
   display: none;
 }
 
+
 .profileContainer{
   display: flex;
   flex-direction: row;
   gap: 30px;
   padding: 5px 0;
+}
+
+.skillBox li{
+  padding: 2.5px 0;
+}
+
+.skillSub{
+  font-weight: 550;
+}
+
+.skills{
+  font-size: 0.92rem;
 }
 
 .profileLink{
