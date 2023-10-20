@@ -5,11 +5,42 @@
   text-align: center;
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* add gradient background from top to bottom */
+  background: linear-gradient(to bottom, #ffffff, #9bd7ff);
+  min-height: 100vh;
+  gap: 50px;
+}
+
+.box{
+  display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
-  gap: 30px;
-  background-color: #d2f7fe;
-  min-height: 80vh;
+  margin-top: 100px;
+}
+
+.button{
+  width: 17%;
+  background-color: #22b0c9;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  /* add gradient animation on hover */
+  animation: gradient 3s ease-in-out infinite;
+}
+.button:hover{
+  background: linear-gradient(to right, #4797e7, #054d80);
+}
+
+
+.navlink{
+  text-decoration: none;
+  color: white;
 }
 
 .heading{
@@ -26,7 +57,7 @@
 
 .heading span{
   background-clip: text;
-  background-image: linear-gradient(to right, #04d3f8, #0d92f1);
+  background-image: linear-gradient(to right, #4797e7, #054d80);
   color: transparent;
   font-family: 'Poppins', sans-serif;
 
