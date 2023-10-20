@@ -791,6 +791,14 @@ function Editor(props) {
           value={sectionTitle}
           onChange={(e) => setSectionTitle(e.target.value)}
         />
+        {/* a checkbox to clear sectionTitle */}
+        <div className={styles.clear}>
+          <input type="checkbox" 
+          // if checked then clear sectionTitle else if unchecked then show sectionTitle
+          checked={!sectionTitle}
+          onChange={(e) => setSectionTitle(e.target.checked ? "" : sections[activeSectionKey])}
+          />  Clear Section From Resume
+        </div>
 
 
         <div className={styles.chips}>

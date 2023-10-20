@@ -71,18 +71,23 @@
 .templates button{
     padding: 8px 16px;
     border-radius: 5px;
-    border: none;
-    outline: none;
     cursor: pointer;
+    outline: none;
     font-size: 1rem;
+    background-color: #0d93b5;
     font-weight: 500;
-    background-color: #1f7c8d;
     color: #ffffff;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     letter-spacing: 1px;
     display: flex;
     gap: 5px;
     align-items: center;
+}
+.templateInactive{
+    border: none;
+}
+.templateActive{
+    border: 2.2px solid #000;
 }
 
 .main{

@@ -7,11 +7,11 @@ import Resume from '../Resume/Resume';
 
 function Body() {
   const colors = [
-    "#5CDB95",
-    "#FF6F69",
-    "#FFE66D",
-    "#6B705C",
-    "#355C7D",
+    "#393838",
+    "#0d93b5",
+    "#ef6455",
+    "#14aa1c",
+    "#b108bd",
   ];
 
   const sections = {
@@ -194,9 +194,9 @@ function Body() {
 
 // console.log(preFilledInformation['Basic Info']);
 
-  useEffect(()=>{
-    console.log(resumeInformation)
-  },[resumeInformation])
+  // useEffect(()=>{
+  //   console.log(resumeInformation)
+  // },[resumeInformation])
 
   return (
     <div className={styles.container}>
@@ -233,7 +233,7 @@ function Body() {
               onClick={() => setResumeInformation(preFilledInformation)}
               style={
                 {
-                  width: "20%",
+                  width: "17.8%",
                   margin: "0 auto",
                   backgroundColor: "#5CDB95",
                   color: "white",
@@ -251,8 +251,16 @@ function Body() {
             
 
             <div className={styles.templates}>
-              <button  onClick={() => handleTemplateClick('Template1')}>Template 1</button>
-              <button onClick={() => handleTemplateClick('Template2')}>Template 2</button>
+              <button 
+                onClick={() => handleTemplateClick('Template1')}
+                className={`${selectedTemplate === "Template1" ? styles.templateActive: styles.templateInactive}` }
+              >Template 1
+              </button>
+              <button 
+                onClick={() => handleTemplateClick('Template2')}
+                className={`${selectedTemplate === "Template2" ? styles.templateActive: styles.templateInactive}` }
+              >Template 2
+              </button>
             </div>
             
 

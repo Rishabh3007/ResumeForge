@@ -20,13 +20,22 @@ function Header() {
         </div>
       </div>
 
-      <div className={styles.bodyButton}>
-        <button className={styles.button}>
-          <NavLink to="/body" className={styles.navlink}>
-            Start Building
-          </NavLink>
-        </button>
-      </div>
+      <NavLink to="/body" className={styles.navlink}>
+  <div className={styles.bodyButton}>
+    <button className={styles.button}>
+      Start Building
+    </button>
+  </div>
+</NavLink>
+      <div className={styles.footer}>
+        <p>
+            Made with ❤️ by <a href='https://github.com/Rishabh3007'>Rishabh</a>
+        </p>
+        <p className={styles.line2}>
+            Resume Forge © 2023
+        </p>
+
+    </div>
     </div>
   );
 }
