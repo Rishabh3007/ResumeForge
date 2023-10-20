@@ -200,7 +200,7 @@ function Body() {
 
   return (
     <div className={styles.container}>
-        <p className={styles.heading}>Resume Builder</p>
+        <p className={styles.heading}>Resume Forge</p>
         <div className={styles.toolbar}>
             <div className={styles.colors}>
                 {colors.map((item) => (
