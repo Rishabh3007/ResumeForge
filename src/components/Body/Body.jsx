@@ -231,20 +231,7 @@ function Body() {
 
             <button 
               onClick={() => setResumeInformation(preFilledInformation)}
-              style={
-                {
-                  width: "17.8%",
-                  margin: "0 auto",
-                  backgroundColor: "#5CDB95",
-                  color: "white",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  border: "none",
-                  outline: "none",
-                  fontSize: "1rem"
-                }
-              }
+              className={styles.prefillButton}
             >
             pre fill data
             </button>

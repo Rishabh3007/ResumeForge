@@ -221,3 +221,162 @@
     padding: 30px 0;
     color: blue;
 }
+
+/* make it responsive for mobile devices. dont change resume layout. just whole resume should fit in screen*/
+@media only screen and (max-width: 768px){
+    .container{
+        min-width: 0px;
+        min-height: 0px;
+        max-height: 100%;
+        max-width: 100%;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+    .main{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .col1{
+        flex: 1;
+    }
+    .col2{
+        flex: 1;
+    }
+    .header .heading{
+        font-size: 2.2rem;
+    }
+    .header .subheading{
+        font-size: 1rem;
+    }
+    .header .links{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header .link{
+        font-size: 0.9rem;
+    }
+    .section .sectionTitle{
+        font-size: 1.2rem;
+    }
+    .content .title{
+        font-size: 1rem;
+    }
+    .content .subtitle{
+        font-size: 1rem;
+    }
+    .content .link{
+        font-size: 0.8rem;
+    }
+    .content .date{
+        font-size: 0.9rem;
+    }
+    .content .points,
+    .numbered{
+        font-size: 0.9rem;
+    }
+    .skillBox li{
+        font-size: 0.9rem;
+    }
+    .profileLink{
+        font-size: 0.9rem;
+    }
+    .box .title{
+        font-size: 0.9rem;
+    }
+    .box1{
+        flex-direction: column;
+    }
+    .box2{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .box2 .title{
+        font-size: 1rem;
+    }
+    .box2 .link{
+        font-size: 0.9rem;
+    }
+    .box2 .date{
+        font-size: 0.9rem;
+    }
+    .box2 .points,
+    .numbered{
+        font-size: 0.9rem;
+    }
+    .box2 .subtitle{
+        font-size: 1rem;
+    }
+    .box2 .content .item{
+        padding-bottom: 0px;
+    }
+    .box2 .content .item:last-child{
+        padding-bottom: 10px;
+    }
+    .box2 .content .title{
+        font-size: 1rem;
+    }
+    .box2 .content .subtitle{
+        font-size: 1rem;
+    }
+    .box2 .content .link{
+        font-size: 0.8rem;
+    }
+    .box2 .content .date{
+        font-size: 0.9rem;
+    }
+    .box2 .content .points,
+    .numbered{
+        font-size: 0.9rem;
+    }
+    .box2 .skillBox li{
+        font-size: 0.9rem;
+    }
+    .box2 .profileLink{
+        font-size: 0.9rem;
+    }
+    .projectBox .title{
+        font-size: 1rem;
+    }
+    .projectBox .link{
+        font-size: 0.9rem;
+    }
+    .projectBox .date{
+        font-size: 0.9rem;
+    }
+    .projectBox .points,
+    .numbered{
+        font-size: 0.9rem;
+    }
+    .projectBox .subtitle{
+        font-size: 1rem;
+    }
+    .projectBox .content .item{
+        padding-bottom: 0px;
+    }
+    .projectBox .content .item:last-child{
+        padding-bottom: 10px;
+    }
+    .projectBox .content .title{
+        font-size: 1rem;
+    }
+    .projectBox .content .subtitle{
+        font-size: 1rem;
+    }
+    .projectBox .content .link{
+        font-size: 0.8rem;
+    }
+    .projectBox .content .date{
+        font-size: 0.9rem;
+    }
+    .projectBox .content .points,
+    .numbered{
+        font-size: 0.9rem;
+    }
+    .projectBox .skillBox li{
+        font-size: 0.9rem;
+    }
+    .projectBox .profileLink{
+        font-size: 0.9rem;
+    }
+}
