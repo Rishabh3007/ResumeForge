@@ -130,7 +130,7 @@ const Resume = forwardRef((props, ref) => {
                   {item.link ? (
                     <a className={styles.link} href={item.link}>
                       <Paperclip />
-                      Deplyed Link
+                      Deployed Link
                     </a>
                   ) : (
                     <span />

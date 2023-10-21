@@ -28,7 +28,7 @@ function Body() {
   const resumeRef = useRef()
 
   const [activeColor, setActiveColor] = useState(colors[0]);
-  const [selectedTemplate, setSelectedTemplate] = useState("Template1");
+  const [selectedTemplate, setSelectedTemplate] = useState("SDETemplate");
 
   const handleTemplateClick = (template) => {
     setSelectedTemplate(template);
@@ -82,12 +82,11 @@ function Body() {
         "id": "Basic Info",
         "sectionTitle": "Basic Info",
         "detail": {
-            "name": "Rishabh Jain",
+            "name": "My Name",
             "title": "Software Developer",
-            "linkedin": "https://www.linkedin.com/in/rishabh-jain-a9876820b/",
-            "github": "githublink.com",
-            "phone": "+917066388725",
-            "email": " jainrishabh3007@gmail.com "
+            "linkedin": "linkedin.com",
+            "phone": "1234567890",
+            "email": "myemail@gmail.com"
         }
     },
     "Work Experience": {
@@ -95,16 +94,16 @@ function Body() {
         "sectionTitle": "Work Experience",
         "details": [
             {
-                "certificationLink": "meracertificate.linkcom",
-                "title": "Software Developer (SDE 1)",
-                "startDate": "2023-10-03",
-                "endDate": "2023-10-21",
-                "companyName": "Meri Company",
+                "certificationLink": "certificate.com",
+                "title": "software developer",
+                "startDate": "2023-10-08",
+                "endDate": "2023-10-25",
+                "companyName": "Big Company",
                 "location": "Mumbai",
                 "points": [
-                    "Collaborated with cross-functional teams to develop and implement software solutions, contributing to the successful delivery of X projects. Demonstrated proficiency in debugging and troubleshooting complex code, fostering a culture of shared knowledge and problem-solving.",
-                    "Played a key role in an Agile development environment, participating in sprint planning, daily stand-ups, and sprint demos. Implemented and maintained continuous integration pipelines, ensuring code quality and enabling rapid deployment cycles.",
-                    " Contributed to the design and development of scalable systems, optimizing critical components for improved performance. Demonstrated proficiency in writing clean, efficient code, resulting in a XX% reduction in response times and enhancing overall user experience."
+                    "Collaborated with team to develop and implement software solutions, contributing to the successful delivery of X Project.",
+                    "Implemented and maintained continuous integration pipelines, ensuring code quality and enabling rapid deployment cycles.",
+                    "Collaborated with cross-functional teams to develop and implement software solutions, contributing to the successful delivery of X projects. Demonstrated proficiency in debu"
                 ]
             }
         ]
@@ -115,22 +114,22 @@ function Body() {
         "details": [
             {
                 "link": "deployedlink.com",
-                "title": "NoteSync",
-                "github": "githublink.com",
+                "title": "chat app",
+                "github": "githubrepo.com",
                 "points": [
-                    "Implemented a MongoDB Cloud database solution to ensure data security and optimize retrieval speed for seamless user experience..",
-                    "Utilized Material-UI React components to create a responsive and elegant user interface, while also integrating essential functionalities such as adding and deleting notes.",
-                    "Designed and developed a dynamic web application that facilitates efficient note-taking while ensuring respon\u0002siveness across various devices."
+                    "Developed a real-time chat application using like WebSocket and Socket.IO, enabling instant communication between users.",
+                    " Implemented secure user authentication and authorization mechanisms, ensuring data privacy and access control through technologies like JWT (JSON Web Tokens) and OAuth.",
+                    "Designed the application to be responsive across various devices and browsers, ensuring a seamless user experience on both desktop and mobile platforms."
                 ]
             },
             {
-                "link": "deployedLink.com",
-                "title": "CraftMyResume",
-                "github": "githublink.com",
+                "link": "deployedlink.com",
+                "title": "E-Commerce",
+                "github": "githubrepo.com",
                 "points": [
-                    "Developed a user-centric web application that empowers individuals to create professional resumes with ease through an intuitive form-filling experience",
-                    "Facilitating real-time resume preview and immediate download for users, ensuring prompt access to their pro\u0002fessionally crafted documents",
-                    "Used a tech stack comprising React.js, JavaScript ES6+, and CSS3 to enhance the application’s functionality"
+                    "developed of a full-stack e-commerce platform incorporating features such as product listings, authentication, secure payment.",
+                    "Designed and implemented a user-friendly interface with a focus on responsive design, resulting in an intuitive shopping experience across desktop and mobile devices.",
+                    "Integrated popular payment gateways Stripe to facilitate secure transactions, ensuring a seamless checkout process for customers and boosting conversion rates."
                 ]
             }
         ]
@@ -140,11 +139,11 @@ function Body() {
         "sectionTitle": "Education",
         "details": [
             {
-                "title": "B. Tech in Electronics and Communication Engineering",
-                "college": "Indian Institute of Information Technology, Surat",
-                "startDate": "2023-10-11",
-                "endDate": "2023-10-23",
-                "grade": " CGPA: 8.49/10 (till 6 th semester)"
+                "title": "B-tech",
+                "college": "MY College",
+                "startDate": "2023-10-16",
+                "endDate": "2023-10-29",
+                "grade": "CGPA: XX/10"
             }
         ]
     },
@@ -152,9 +151,9 @@ function Body() {
         "id": "Achievement",
         "sectionTitle": "Achievement",
         "points": [
-            "Tech Coordinator at Spring Fiesta 2023 (Cultural Event of IIIT Surat)",
-            "Solved 500+ questions across all coding platforms.",
-            "I successfully coordinated and managed a tech quiz event, engaging a diverse group of over 100 participants"
+            "Led a team of X members to successfully deliver [project], resulting in a XX% improvement in [relevant metric]",
+            " Recognized for providing innovative solutions to challenges, leading to a XX% reduction in [specific metric] ",
+            " Played a pivotal role in [specific initiative/project] that led to a XX% increase in [revenue/sales/efficiency]"
         ]
     },
     "Summary": {
@@ -166,27 +165,27 @@ function Body() {
         "id": "Skill",
         "sectionTitle": "Skill",
         "detail": {
-            "skillSub1": "Programming Languages",
-            "skillSub2": "Computer Science ",
-            "skillSub3": "Web Development",
-            "skills1": "C, C++",
-            "skills2": "Data Structure and Algorithms, DBMS, Object Oriented Programming",
-            "skills3": "HTML, CSS ,JavaScript , ReactJs , Bootstrap , MySQL, Express ,NodeJs, MongoDB"
+            "skillSub1": "Subjects",
+            "skillSub2": "Technical",
+            "skillSub3": "Soft Skills",
+            "skills1": "All, My, Core, Subjects",
+            "skills2": "All, My, Technical, Skills",
+            "skills3": "All, My, Soft, Skills"
         }
     },
     "Profile Links": {
         "id": "Profile Links",
         "sectionTitle": "Profile Links",
         "detail": {
-            "name1": " Leetcode",
-            "name2": " GeeksForGeeks",
-            "name3": " Coding Ninjas",
-            "name4": "",
+            "name1": "profile1",
+            "name2": "profile2",
+            "name3": "profile3",
+            "name4": "profile4",
             "name5": "",
-            "link1": "https://leetcode.com/Rishabh3007/",
-            "link2": "https://auth.geeksforgeeks.org/user/jainrishabh3007/",
-            "link3": "https://www.codingninjas.com/studio/profile/Rishabh3007",
-            "link4": "",
+            "link1": "profile.com",
+            "link2": "profile.com",
+            "link3": "profile.com",
+            "link4": "profile.com",
             "link5": ""
         }
     }
@@ -239,14 +238,14 @@ function Body() {
 
             <div className={styles.templates}>
               <button 
-                onClick={() => handleTemplateClick('Template1')}
-                className={`${selectedTemplate === "Template1" ? styles.templateActive: styles.templateInactive}` }
-              >Template 1
+                onClick={() => handleTemplateClick('SDETemplate')}
+                className={`${selectedTemplate === "SDETemplate" ? styles.templateActive: styles.templateInactive}` }
+              >SDE Template
               </button>
               <button 
-                onClick={() => handleTemplateClick('Template2')}
-                className={`${selectedTemplate === "Template2" ? styles.templateActive: styles.templateInactive}` }
-              >Template 2
+                onClick={() => handleTemplateClick('SectionTemplate')}
+                className={`${selectedTemplate === "SectionTemplate" ? styles.templateActive: styles.templateInactive}` }
+              >Section Template
               </button>
             </div>
             
